@@ -3,20 +3,17 @@
 
 enum direction { UP, DOWN, LEFT, RIGHT };
 
-struct ant
-{
+struct ant {
     int x;
     int y;
     enum direction direction;
 };
 
-struct rule
-{
+struct rule {
     char* rules;
 };
 
-//#define ant_is_at(y,x) (((ant->y == y) && (ant->x == x)) ? true:false)
-#define ant_is_at(y,x) ((ant->y == y) && (ant->x == x)) 
+#define ant_is_at(y, x) ((ant->y == y) && (ant->x == x))
 
 enum colour { WHITE, BLACK };
 

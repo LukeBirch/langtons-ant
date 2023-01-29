@@ -7,7 +7,7 @@ DEPS = langton.h, visualiser.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 all: langton.o visualiser.o main.c
-	$(CC) -Wall -o ant main.c langton.o visualiser.o -lncursesw
+	$(CC) -o ant main.c langton.o visualiser.o -lncursesw
 #curses -lncursesw
 
 langton.o: langton.c langton.h

@@ -16,5 +16,5 @@ bool not_quit();
 cell cell_at_fct(int y, int x);
 void end_visualisation();
 const char* direction_to_s(enum direction d);
-
+void ADVANCED_visualise_and_advance();
 #endif
