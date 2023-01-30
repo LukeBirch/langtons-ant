@@ -1,14 +1,14 @@
 CC=gcc
 CFLAGS=-I
-DEPS = langton.h, visualiser.h
+DEPS = langton.h, visualiser.h 
+OBJ = langton.o visualiser.o 
 
 %.o: %.c $(DEPS)
-%.o: %.c
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-all: langton.o visualiser.o main.c
-	$(CC) -o ant main.c langton.o visualiser.o -lncursesw
-#curses -lncursesw
+make all: visualiser.o langton.o main.c
+	$(CC) -o ant main.c visualiser.o langton.o -lncursesw
+	./ant LLR
 
 langton.o: langton.c langton.h
 	$(CC) -c langton.c
@@ -16,15 +16,9 @@ langton.o: langton.c langton.h
 visualiser.o: visualiser.c visualiser.h
 	$(CC) -c visualiser.c
 
-#langton.o: langton.c 
-#	$(CC) -c langton.c
-
-#visualiser.o: visualiser.c 
-#	$(CC) -c visualiser.c
-
-library:
-	
+library: 
+	$(CC) -c -fPIC langton.c
+	$(CC) -c -fPIC visualiser.c
+	$(CC) -shared -o libant.so langton.o visualiser.o -lncursesw
 clean:
-	rm langton.o visualiser.o ant
-
-
+	rm $(OBJ) ant
